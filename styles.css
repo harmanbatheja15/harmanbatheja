@@ -7,20 +7,6 @@ body {
     overflow-x: hidden;
 }
 
-/*.alert {
-    position: relative;
-    padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: .25rem
-}
-
-.alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-}*/
-
 ::-webkit-scrollbar {
     background-color: var(--bg-black-50);
     width: 8px;
@@ -669,7 +655,6 @@ ul {
 
 .contact-section {
     padding: 80px 0 80px;
-    min-height: 100vh;
 }
 
 .contact-section .contact-item {
