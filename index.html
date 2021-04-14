@@ -429,14 +429,36 @@
 
     // Save message to firebase
     function saveMessage(name, email, phone, message) {
-        var newMessageRef = messagesRef.push();
-        newMessageRef.set({
-            name: name,
-            email: email,
-            phone: phone,
-            message: message,
-        });
-        alert("Message Sent Successfully");
+
+        if(name.length <= 2) {
+
+            alert("Name must be 3 characters long!");
+
+        } else if(phone.length <= 6) {
+
+            alert("Phone Number must be 7 characters long!");
+
+        } else if( phone.length >= 16) {
+
+            alert("Phone Number must be less than 16 characters!");
+
+        } else {
+
+            var newMessageRef = messagesRef.push();
+
+            newMessageRef.set({
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+            });
+
+            alert("Message Sent Successfully");
+
+            // Clear form on Submit
+            document.getElementById('contactForm').reset();
+
+        }
     }
 
   </script>
