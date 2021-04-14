@@ -326,29 +326,28 @@
         <!-- Contact item end -->
       </div>
 
-<!--       <div class="row">
+      <div class="row">
         <div class="contact-form">
-          <form>
+          <form id="contactForm">
             <div class="row">
               <div class="w-50">
-                {% csrf_token %}
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Name" name="name" class="input-control" required />
+                  <input type="text" placeholder="Name" name="name" id="name" class="input-control" required />
                 </div>
 
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="email" placeholder="Email" name="email" class="input-control" required />
+                  <input type="email" placeholder="Email" name="email" id="email" class="input-control" required />
                 </div>
 
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="number" placeholder="Mobile Number" name="phone" class="input-control" required />
+                  <input type="number" placeholder="Mobile Number" name="phone" id="phone" class="input-control" required />
                 </div>
 
               </div>
 
               <div class="w-50">
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <textarea class="input-control" name="message" placeholder="Message" required></textarea>
+                  <textarea class="input-control" name="message" id="message" placeholder="Message" required></textarea>
                 </div>
               </div>
 
@@ -362,14 +361,17 @@
             </div>
           </form>
         </div>
-      </div> -->
+      </div>
     </div>
   </section>
+  
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
 
   <script>
 
     // Preloader
-
     (() => {
       window.addEventListener("load", function () {
         document.querySelector(".preloader").classList.add("opacity-0");
@@ -378,8 +380,66 @@
         }, 1000);
       });
     })();
+    
+    // Web app Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfB7Mtdo_3SDFaHx0jJExuHpGzlR8kHpg",
+      authDomain: "harman-portfolio.firebaseapp.com",
+      projectId: "harman-portfolio",
+      storageBucket: "harman-portfolio.appspot.com",
+      messagingSenderId: "798588615551",
+      appId: "1:798588615551:web:f9aaf53f3ceea50d8a784a",
+      measurementId: "G-H80D9VRP6H"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    // Reference messages collection
+    var messagesRef = firebase.database().ref('Contact');
+
+    // Listen for form submit
+    document.getElementById('contactForm').addEventListener('submit', submitForm);
+
+    // Submit form
+    function submitForm(e) {
+
+        e.preventDefault();
+
+        // Get values
+        var name = getInputVal('name');
+        var email = getInputVal('email');
+        var phone = getInputVal('phone');
+        var message = getInputVal('message');
+
+        // Save Message
+        saveMessage(name, email, phone, message);
+
+        // Clear form on Submit
+        document.getElementById('contactForm').reset();
+
+    }
+
+    // Function to get form values
+    function getInputVal(id) {
+        return document.getElementById(id).value;
+    }
+
+    // Save message to firebase
+    function saveMessage(name, email, phone, message) {
+        var newMessageRef = messagesRef.push();
+        newMessageRef.set({
+            name: name,
+            email: email,
+            phone: phone,
+            message: message,
+        });
+        alert("Message Sent Successfully");
+    }
 
   </script>
+  
 </body>
 
 </html>
