@@ -577,6 +577,7 @@ ul {
 
 @media(max-width: 360px) {
     .about-section .skills .skill-item .progress_bar span {
+        width: 100%;
         right: 0 !important;
     }
 }
