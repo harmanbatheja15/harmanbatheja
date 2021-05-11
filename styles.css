@@ -565,6 +565,12 @@ ul {
     border-radius: 10px;
 }
 
+@media(max-width: 360px) {
+    .about-section .skills .skill-item .progress_bar {
+        width: 100%;
+    }
+}
+
 .about-section .skills .skill-item .progress_bar span {
     position: absolute;
     right: 0;
@@ -573,13 +579,6 @@ ul {
     font-weight: 500;
     color: var(--text-black-600);
     margin-top: -40px;
-}
-
-@media(max-width: 360px) {
-    .about-section .skills .skill-item .progress_bar span {
-        width: 100%;
-        right: 0 !important;
-    }
 }
 
 /* Contact Section */
