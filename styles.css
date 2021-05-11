@@ -565,12 +565,6 @@ ul {
     border-radius: 10px;
 }
 
-@media(max-width: 360px) {
-    .about-section .skills .skill-item .progress_bar {
-        width: 100%;
-    }
-}
-
 .about-section .skills .skill-item .progress_bar span {
     position: absolute;
     right: 0;
