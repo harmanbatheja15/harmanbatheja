@@ -117,6 +117,10 @@
     .effect-wrap {
         display: none;
     }
+    
+    .about-section .skills .skill-item .progress_bar span {
+        top: 50px;
+    }
 
 }
 
