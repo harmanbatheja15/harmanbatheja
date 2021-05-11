@@ -575,6 +575,12 @@ ul {
     margin-top: -40px;
 }
 
+@media(max-width: 360px) {
+    .about-section .skills .skill-item .progress_bar span {
+        right: 0 !important;
+    }
+}
+
 /* Contact Section */
 
 .contact-section {
